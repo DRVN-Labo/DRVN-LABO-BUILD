@@ -33,7 +33,7 @@
     "react-dom": "^18",
     "react-icons": "^5.5.0",
     "viem": "^2.27.2",
-    "wagmi": "^2.16.0"
+    "wagmi": "^2.19.3"
   },
   "devDependencies": {
     "@types/node": "^22",
