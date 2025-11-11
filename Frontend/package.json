@@ -41,7 +41,7 @@
     "@types/react-dom": "^18",
     "autoprefixer": "^10.4.17",
     "eslint": "^8",
-    "eslint-config-next": "15.3.3",
+    "eslint-config-next": "16.0.1",
     "eslint-config-prettier": "^10.1.1",
     "eslint-plugin-prettier": "^5.2.3",
     "eslint-plugin-react": "^7.37.4",
