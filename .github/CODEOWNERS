@@ -1,0 +1,13 @@
+# Default owners for everything in the repo
+* @Mr-Web3
+
+# Frontend workspace
+Frontend/ @Mr-Web3
+
+# Contracts workspace
+Hardhat/ @Mr-Web3
+
+# Documentation
+*.md @Mr-Web3
+.github/ @Mr-Web3
+

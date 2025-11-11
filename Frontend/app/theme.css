@@ -1,0 +1,575 @@
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Prevent pull-to-refresh on mobile devices */
+html,
+body {
+  overscroll-behavior-y: contain;
+  -webkit-overflow-scrolling: touch;
+}
+
+:root {
+  --app-background: #ffffff;
+  --app-foreground: #111111;
+  --app-foreground-muted: #58585c;
+  --app-accent: #00ff88;
+  --app-accent-hover: #00cc6a;
+  --app-accent-active: #00aa55;
+  --app-accent-light: #e6fff0;
+  --app-gray: #f5f5f5;
+  --app-gray-dark: #e0e0e0;
+  --app-card-bg: rgba(255, 255, 255, 0.4);
+  --app-card-border: rgba(0, 0, 0, 0.1);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --app-background: #0a0a0f;
+    --app-foreground: #ffffff;
+    --app-foreground-muted: #c8c8d1;
+    --app-accent: #00ff88;
+    --app-accent-hover: #00cc6a;
+    --app-accent-active: #00aa55;
+    --app-accent-light: #1e293b;
+    --app-gray: #1a1a1f;
+    --app-gray-dark: #2a2a2f;
+    --app-card-bg: rgba(26, 26, 31, 0.4);
+    --app-card-border: rgba(0, 255, 136, 0.3);
+  }
+}
+
+.mini-app-theme {
+  --ock-font-family: "Geist", sans-serif;
+  --ock-border-radius: 0.75rem;
+  --ock-border-radius-inner: 0.5rem;
+
+  /* Text colors */
+  --ock-text-inverse: var(--app-background);
+  --ock-text-foreground: var(--app-foreground);
+  --ock-text-foreground-muted: var(--app-foreground-muted);
+  --ock-text-error: #ef4444;
+  --ock-text-primary: var(--app-accent);
+  --ock-text-success: #22c55e;
+  --ock-text-warning: #f59e0b;
+  --ock-text-disabled: #a1a1aa;
+
+  /* Background colors */
+  --ock-bg-default: var(--app-background);
+  --ock-bg-default-hover: var(--app-gray);
+  --ock-bg-default-active: var(--app-gray-dark);
+  --ock-bg-alternate: var(--app-gray);
+  --ock-bg-alternate-hover: var(--app-gray-dark);
+  --ock-bg-alternate-active: var(--app-gray-dark);
+  --ock-bg-inverse: var(--app-foreground);
+  --ock-bg-inverse-hover: #2a2a2a;
+  --ock-bg-inverse-active: #3a3a3a;
+  --ock-bg-primary: var(--app-accent);
+  --ock-bg-primary-hover: var(--app-accent-hover);
+  --ock-bg-primary-active: var(--app-accent-active);
+  --ock-bg-primary-washed: var(--app-accent-light);
+  --ock-bg-primary-disabled: #80a8ff;
+  --ock-bg-secondary: var(--app-gray);
+  --ock-bg-secondary-hover: var(--app-gray-dark);
+  --ock-bg-secondary-active: #d1d1d1;
+  --ock-bg-error: #fee2e2;
+  --ock-bg-warning: #fef3c7;
+  --ock-bg-success: #dcfce7;
+  --ock-bg-default-reverse: var(--app-foreground);
+
+  /* Icon colors */
+  --ock-icon-color-primary: var(--app-accent);
+  --ock-icon-color-foreground: var(--app-foreground);
+  --ock-icon-color-foreground-muted: #71717a;
+  --ock-icon-color-inverse: var(--app-background);
+  --ock-icon-color-error: #ef4444;
+  --ock-icon-color-success: #22c55e;
+  --ock-icon-color-warning: #f59e0b;
+
+  /* Line colors */
+  --ock-line-primary: var(--app-accent);
+  --ock-line-default: var(--app-gray-dark);
+  --ock-line-heavy: #a1a1aa;
+  --ock-line-inverse: #d4d4d8;
+}
+
+* {
+  touch-action: manipulation;
+}
+
+body {
+  color: var(--app-foreground);
+  background: var(--app-background);
+  font-family: var(--font-geist-sans), sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* Grid background pattern */
+/* .grid-background {
+  background-image: 
+    linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
+  background-size: 20px 20px;
+} */
+
+/* Custom sidebar styles */
+.sidebar-collapse-arrow {
+  position: absolute;
+  top: 0rem;
+  right: -0rem;
+  width: 2rem;
+  height: 4.3rem;
+  /* background: #131725; */
+  border-radius: 6px 0 0 4px;
+  border: 1px solid #8351a1;
+  border-right: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  /* z-index: 20; */
+  transition: all 0.2s ease;
+}
+
+/* .sidebar-collapse-arrow:hover {
+  background: #131725;
+  transform: scale(1.05);
+} */
+
+.sidebar-collapse-arrow svg {
+  width: 0.75rem;
+  height: 0.75rem;
+  color: #ffffff;
+}
+
+[data-testid*="ockConnectWallet_Connected"],
+.ockConnectWallet_Connected,
+.ockConnectAccountButtonInner {
+  color: #ffffff !important;
+  font-family: "Monospace", sans-serif !important;
+}
+
+.ock-icon-color-foreground {
+  fill: #00daa2 !important;
+}
+
+.ock-bg-secondary {
+  background-color: #1a1a1a !important;
+}
+
+.ock-bg-alternate {
+  background-color: #1a1a1a !important;
+  border: 1px solid #ffffff !important;
+}
+
+[data-testid*="ockWalletDropdown"],
+.ockWalletDropdown,
+.ock-bg-default {
+  background-color: black !important;
+  border: none;
+  /* border-radius: 1rem !important; */
+  font-family: "Orbitron", sans-serif !important;
+  transition: all 0.2s ease !important;
+  z-index: 99999 !important;
+}
+
+/* Disconnect Button in Dropdown */
+.ockWalletDropdownDisconnect {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+  /* border-radius: 0.5rem !important; */
+  padding: 6px 12px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.ockWalletDropdownDisconnect:hover {
+  background-color: #ef4444 !important;
+  color: #ffffff !important;
+  transform: scale(1.02) !important;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* .ock-disconnect-svg {
+  color: #ffffff !important;
+} */
+
+/* Identity Elements (address display, etc.) */
+.ock-text-foreground {
+  color: #ffffff !important;
+  font-family: "Monospace", sans-serif !important;
+  background-color: transparent !important;
+}
+
+/* Text color overrides for wallet components */
+.ock-text-inverse {
+  color: #ffffff !important;
+}
+
+/* Ensure progress bars are clean - no text content */
+.progress-bar-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.progress-bar-container::before,
+.progress-bar-container::after {
+  content: none !important;
+  display: none !important;
+}
+
+.progress-bar-fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #00daa2;
+  border-radius: inherit;
+  transition: width 0.5s ease;
+}
+
+.progress-bar-fill::before,
+.progress-bar-fill::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Remove any pseudo-elements that might add content */
+.progress-bar-container *::before,
+.progress-bar-container *::after {
+  content: none !important;
+  display: none !important;
+}
+
+/* Override any potential content from other CSS */
+.progress-bar-container,
+.progress-bar-fill {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+}
+
+/* Ensure no text can appear in progress bars */
+.progress-bar-container * {
+  font-size: 0 !important;
+  line-height: 0 !important;
+  color: transparent !important;
+  text-indent: -9999px !important;
+}
+
+/* Nuclear option - completely hide any content in progress bars */
+.progress-bar-container,
+.progress-bar-fill {
+  text-indent: -9999px !important;
+  font-size: 0 !important;
+  line-height: 0 !important;
+  overflow: hidden !important;
+}
+
+.progress-bar-container::before,
+.progress-bar-container::after,
+.progress-bar-fill::before,
+.progress-bar-fill::after {
+  content: "" !important;
+  display: none !important;
+  visibility: hidden !important;
+}
+
+/* Override any potential inherited styles */
+.progress-bar-container,
+.progress-bar-fill,
+.progress-bar-container *,
+.progress-bar-fill * {
+  content: "" !important;
+  text-content: "" !important;
+  -webkit-text-content: "" !important;
+  -moz-text-content: "" !important;
+}
+
+/* OnChainKit Swap Component Styling */
+.ockSwapAmountInput {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  font-family: "Courier New", monospace !important;
+}
+
+.ockSwapToggleButton {
+  background: #00daa2 !important;
+  border: 2px solid #00daa2 !important;
+  color: #000000 !important;
+  border-radius: 50% !important;
+  width: 40px !important;
+  height: 40px !important;
+  transition: all 0.3s ease !important;
+}
+
+.ockSwapButton {
+  background: #00daa2 !important;
+  color: #000000 !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-family: "Courier New", monospace !important;
+  font-weight: bold !important;
+  font-size: 16px !important;
+  padding: 16px 24px !important;
+  transition: all 0.3s ease !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+}
+
+.ockSwapMessage {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+  font-family: "Courier New", monospace !important;
+}
+
+.ockSwapSettings {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 12px !important;
+  padding: 16px !important;
+  z-index: 99999 !important;
+}
+
+.ockSwapSettingsSlippageInput input {
+  background: #111111 !important;
+  border: 1px solid #333333 !important;
+  color: #ffffff !important;
+  border-radius: 6px !important;
+  font-family: "Courier New", monospace !important;
+}
+
+.ockSwapTokenSelector {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 8px !important;
+  color: #ffffff !important;
+}
+
+.ockSwapToast {
+  background: #1a1a1a !important;
+  border: 1px solid #00daa2 !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  font-family: "Courier New", monospace !important;
+}
+
+/* Token dropdown styling */
+.ockSwapTokenDropdown {
+  background: #1a1a1a !important;
+  border: 1px solid #333333 !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5) !important;
+  z-index: 99999 !important;
+}
+
+.ockSwapTokenDropdownItem {
+  color: #ffffff !important;
+  font-family: "Courier New", monospace !important;
+  transition: all 0.2s ease !important;
+}
+
+.ockSwapTokenDropdownItem:hover {
+  background: #00daa2 !important;
+  color: #000000 !important;
+}
+
+/* Loading states */
+.ockSwapButton[data-loading="true"] {
+  background: #00daa2 !important;
+  color: #000000 !important;
+}
+
+.ockSwapButton[data-loading="true"]::after {
+  border-color: #000000 !important;
+  border-top-color: transparent !important;
+}
+
+/* Error states */
+.ockSwapMessage[data-type="error"] {
+  border-color: #ef4444 !important;
+  background: rgba(239, 68, 68, 0.1) !important;
+}
+
+/* Success states */
+.ockSwapMessage[data-type="success"] {
+  border-color: #00daa2 !important;
+  background: rgba(0, 218, 162, 0.1) !important;
+}
+
+/* Ensure swap settings dropdown appears above everything */
+.ockSwapSettings > div {
+  z-index: 99999 !important;
+}
+
+.ockSwapSettings [role="dialog"] {
+  z-index: 99999 !important;
+}
+
+.ockSwapSettings [data-radix-popper-content-wrapper] {
+  z-index: 99999 !important;
+}
+
+/* Force wallet dropdown above mobile nav menu */
+@media (max-width: 768px) {
+  [data-testid*="ockWalletDropdown"],
+  .ockWalletDropdown,
+  [data-testid*="ockConnectWallet_Dropdown"],
+  .ockConnectWallet_Dropdown {
+    z-index: 100 !important;
+    position: relative !important;
+  }
+}
+
+/* Force swap settings panel above swap interface on PC only */
+@media (min-width: 768px) {
+  [data-testid="ockSwapSettingsLayout_container"] {
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+
+  .ockSwapSettingsLayout_container {
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+
+  /* Target the specific OnChainKit settings container */
+  .ock-bg-default.ock-border-default.ock-shadow-default.right-0.z-10 {
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+
+  /* Force all OnChainKit dropdowns and modals above everything */
+  [data-testid*="ockSwapSettings"] {
+    z-index: 99999 !important;
+    position: relative !important;
+  }
+}
+
+/* Additional rules for OnChainKit dropdowns */
+[data-radix-popper-content-wrapper] {
+  z-index: 99999 !important;
+}
+
+[role="dialog"] {
+  z-index: 99999 !important;
+}
+
+/* Target OnChainKit specific dropdown containers */
+.ockSwapSettings [data-radix-portal] {
+  z-index: 99999 !important;
+}
+
+/* Ensure all OnChainKit dropdowns are above everything */
+.ockSwapSettings * {
+  z-index: 99999 !important;
+}
+
+/* Force dropdown to appear above all other elements */
+.ockSwapSettings [data-radix-popper-content-wrapper],
+.ockSwapSettings [role="dialog"],
+.ockSwapSettings [data-radix-portal] {
+  z-index: 99999 !important;
+  position: relative !important;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    .mobile-optimized {
+      overflow-x: hidden;
+      width: 100%;
+      /* Allow normal scrolling behavior */
+      overscroll-behavior-y: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .mobile-sidebar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      z-index: 50;
+    }
+
+    /* Fix mobile scrolling issues */
+    main {
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+      /* Ensure smooth scrolling on mobile */
+      scroll-behavior: smooth;
+    }
+
+    /* Prevent pull-to-refresh on the main content area */
+    .overflow-y-auto {
+      overscroll-behavior-y: contain;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    /* Mobile menu improvements */
+    [data-mobile-sidebar] {
+      /* Add subtle shadow for depth */
+      box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Mobile menu close button animation */
+    [data-mobile-sidebar] button[title="Close Menu"] {
+      animation: pulse-subtle 2s infinite;
+    }
+
+    @keyframes pulse-subtle {
+      0%,
+      100% {
+        opacity: 1;
+      }
+      50% {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.animate-fade-out {
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

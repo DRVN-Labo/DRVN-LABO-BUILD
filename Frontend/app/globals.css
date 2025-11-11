@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #111111;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #111111;
+    --foreground: #ffffff;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-space-grotesk), "Space Grotesk", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 80%;
+}
+
+/* Custom scrollbar styles */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Mobile optimizations */
+@media (max-width: 768px) {
+  .scrollbar-hide {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* Improve mobile scrolling */
+  body {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Ensure smooth scrolling on mobile */
+  html {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+  }
+
+  /* Mobile scroll optimization for main content */
+  .mobile-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: auto;
+    scroll-behavior: smooth;
+  }
+
+  /* Fix for mobile layout to prevent blank space */
+  @media (max-width: 768px) {
+    .mobile-scroll {
+      height: auto;
+      min-height: calc(100vh - 80px);
+      /* Ensure no extra space at bottom */
+      padding-bottom: 0;
+    }
+  }
+}
+
+/* DRVN Car Animation Enhancements */
+@keyframes car-glow {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 8px rgba(9, 9, 9, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 15px rgba(8, 8, 8, 0.9));
+  }
+}
+
+/* @keyframes road-dust {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.5);
+  }
+} */
+
+/* Enhanced Car Dashboard Effects */
+@keyframes dashboard-scan {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes fuel-gauge-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 5px rgba(0, 218, 162, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 15px rgba(0, 218, 162, 0.6);
+  }
+}
+
+@keyframes engine-idle {
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-1px);
+  }
+}
+
+@keyframes transmission-glow {
+  0%,
+  100% {
+    border-color: rgba(0, 218, 162, 0.2);
+  }
+  50% {
+    border-color: rgba(0, 218, 162, 0.5);
+  }
+}
+
+/* Car Dashboard Modal Enhancements */
+.dashboard-modal {
+  background: linear-gradient(
+    135deg,
+    rgba(17, 17, 17, 0.95) 0%,
+    rgba(0, 0, 0, 0.9) 50%,
+    rgba(34, 34, 34, 0.95) 100%
+  );
+  backdrop-filter: blur(10px);
+}
+
+.dashboard-header {
+  background: linear-gradient(
+    90deg,
+    rgba(17, 17, 17, 0.9) 0%,
+    rgba(0, 218, 162, 0.1) 50%,
+    rgba(17, 17, 17, 0.9) 100%
+  );
+}
+
+.fuel-gauge-container {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 34, 34, 0.4) 0%,
+    rgba(0, 218, 162, 0.1) 50%,
+    rgba(34, 34, 34, 0.4) 100%
+  );
+  backdrop-filter: blur(5px);
+}
+
+.fuel-gauge-bar {
+  background: linear-gradient(90deg, #00daa2 0%, #00b894 50%, #00daa2 100%);
+  background-size: 200% 100%;
+  animation: dashboard-scan 3s ease-in-out infinite;
+}
+
+.system-status-grid {
+  background: linear-gradient(
+    135deg,
+    rgba(34, 34, 34, 0.3) 0%,
+    rgba(0, 218, 162, 0.05) 50%,
+    rgba(34, 34, 34, 0.3) 100%
+  );
+  backdrop-filter: blur(5px);
+}
+
+.engine-status {
+  animation: engine-idle 2s ease-in-out infinite;
+}
+
+.transmission-status {
+  animation: transmission-glow 3s ease-in-out infinite;
+}
+
+/* Enhanced Button Hover Effects */
+.car-button-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.car-button-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(0, 218, 162, 0.3);
+}
+
+/* Car Background Overlay */
+.car-bg-overlay {
+  background-image: url("/Cars/SupraHero2.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: blur(3px) brightness(0.2) contrast(1.2);
+  animation: car-glow 4s ease-in-out infinite;
+}

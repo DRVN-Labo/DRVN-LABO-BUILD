@@ -1,0 +1,44 @@
+{
+  "name": "Carbon DRVN Founder's Club Key",
+  "description": "Get lifetime VIP access to the DRVN Labo ecosystem. This key unlocks:",
+  "image": "https://red-raw-anteater-260.mypinata.cloud/ipfs/bafybeif2d4dn327q73z3tz5rniocqeo2y4kl5y7k2jxu7i55jbovjujmme",
+  "edition": 1,
+  "attributes": [
+    {
+      "trait_type": "$RS1",
+      "value": "Ferrari 360 Modena"
+    },
+    {
+      "trait_type": "Shares",
+      "value": "0.25"
+    },
+    {
+      "trait_type": "VIP Access",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Premium DRVN Access",
+      "value": "Yes"
+    },
+    {
+      "trait_type": "Access To",
+      "value": "DRVN Labo Ecosystem"
+    },
+    {
+      "trait_type": "Chance To Win",
+      "value": "Yes 1 Full Share"
+    },
+    {
+      "trait_type": "Phygital Merch",
+      "value": "Limited Edition Hat & DFC jacket"
+    },
+    {
+      "trait_type": "$BSTR Allocation",
+      "value": "3000"
+    },
+    {
+      "trait_type": "Rare",
+      "value": "DRVN PFP Airdrop"
+    }
+  ]
+}

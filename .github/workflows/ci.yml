@@ -1,0 +1,131 @@
+name: CI
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - '**.md'
+      - '.gitignore'
+      - 'LICENSE'
+
+jobs:
+  contracts:
+    name: Contracts (Hardhat)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+          cache-dependency-path: Hardhat/yarn.lock
+
+      - name: Generate test account
+        working-directory: ./Hardhat
+        run: |
+          # Generate a dummy account for testing (doesn't need real funds for compilation)
+          yarn generate || echo "Account generation skipped"
+
+      - name: Install dependencies
+        working-directory: ./Hardhat
+        run: yarn install --frozen-lockfile
+
+      - name: Run ESLint
+        working-directory: ./Hardhat
+        run: yarn lint
+        continue-on-error: true
+
+      - name: Run Prettier check
+        working-directory: ./Hardhat
+        run: yarn format:check || echo "Format check skipped"
+        continue-on-error: true
+
+      - name: Compile contracts
+        working-directory: ./Hardhat
+        run: yarn compile
+        continue-on-error: true
+
+  frontend:
+    name: Frontend (Next.js)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: 'npm'
+          cache-dependency-path: Frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: ./Frontend
+        run: npm ci
+
+      - name: Create .env.local for build
+        working-directory: ./Frontend
+        run: |
+          cat > .env.local << EOF
+          # Public/Non-sensitive variables for CI build
+          NEXT_PUBLIC_ONCHAINKIT_PROJECT_NAME=DRVN VHCLS
+          NEXT_PUBLIC_URL=http://localhost:3000
+          NEXT_PUBLIC_ONCHAINKIT_API_KEY=${{ secrets.NEXT_PUBLIC_ONCHAINKIT_API_KEY || '' }}
+          NEXT_PUBLIC_APP_ICON=https://placeholder.com/icon.png
+          NEXT_PUBLIC_APP_SUBTITLE=Premium Automotive Marketplace
+          NEXT_PUBLIC_APP_DESCRIPTION=Exclusive car collections and trading platform
+          NEXT_PUBLIC_APP_SPLASH_IMAGE=https://placeholder.com/splash.jpg
+          NEXT_PUBLIC_SPLASH_BACKGROUND_COLOR=#00daa2
+          NEXT_PUBLIC_APP_PRIMARY_CATEGORY=Automotive
+          NEXT_PUBLIC_APP_HERO_IMAGE=https://placeholder.com/hero.jpg
+          NEXT_PUBLIC_APP_TAGLINE=Where Cars Meet Culture
+          NEXT_PUBLIC_APP_OG_TITLE=DRVN VHCLS - Premium Automotive Marketplace
+          NEXT_PUBLIC_APP_OG_DESCRIPTION=Exclusive car collections and trading platform
+          NEXT_PUBLIC_APP_OG_IMAGE=https://placeholder.com/og-image.jpg
+          NEXT_PUBLIC_ICON_URL=https://placeholder.com/icon.png
+          # Database (optional for build - only needed for runtime)
+          MONGODB_URI=${{ secrets.MONGODB_URI || 'mongodb://localhost:27017/test' }}
+          # Redis (optional for build)
+          REDIS_URL=${{ secrets.REDIS_URL || '' }}
+          REDIS_TOKEN=${{ secrets.REDIS_TOKEN || '' }}
+          # IPFS/Pinata (optional for build)
+          NEXT_PUBLIC_PINATA_API_KEY=${{ secrets.NEXT_PUBLIC_PINATA_API_KEY || '' }}
+          NEXT_PUBLIC_PINATA_SECRET_KEY=${{ secrets.NEXT_PUBLIC_PINATA_SECRET_KEY || '' }}
+          PINATA_JWT=${{ secrets.PINATA_JWT || '' }}
+          NEXT_PUBLIC_IPFS_GATEWAY=${{ secrets.NEXT_PUBLIC_IPFS_GATEWAY || '' }}
+          # Farcaster (optional for build)
+          FARCASTER_HEADER=${{ secrets.FARCASTER_HEADER || '' }}
+          FARCASTER_PAYLOAD=${{ secrets.FARCASTER_PAYLOAD || '' }}
+          FARCASTER_SIGNATURE=${{ secrets.FARCASTER_SIGNATURE || '' }}
+          # Encryption (optional for build)
+          ENCRYPTION_KEY=${{ secrets.ENCRYPTION_KEY || '' }}
+          # Alchemy (optional for build)
+          ALCHEMY_API_KEY=${{ secrets.ALCHEMY_API_KEY || '' }}
+          EOF
+
+      - name: Run ESLint
+        working-directory: ./Frontend
+        run: npm run lint
+        continue-on-error: true
+
+      - name: Run Prettier check
+        working-directory: ./Frontend
+        run: npm run format:check || npx prettier . --check || echo "Format check skipped"
+
+      - name: Run TypeScript type check
+        working-directory: ./Frontend
+        run: npm run typecheck || echo "Type checking skipped"
+
+      - name: Build application
+        working-directory: ./Frontend
+        run: npm run build
+

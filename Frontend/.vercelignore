@@ -1,0 +1,43 @@
+# Hardhat files - not needed for Next.js build
+Hardhat/
+# Keep contracts directory but exclude Hardhat-specific files
+Hardhat/contracts/
+Hardhat/deploy/
+Hardhat/scripts/
+Hardhat/test/
+Hardhat/ignition/
+Hardhat/nft
+Hardhat/collection
+
+# Development and build artifacts
+.next/
+node_modules/
+*.log
+
+# Environment files
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Git
+.git/
+.gitignore
+
+# Yarn
+.yarnrc.yml
+yarn.lock
+
+# Hardhat artifacts
+artifacts/
+cache/
+typechain/
+typechain-types/

@@ -1,0 +1,38 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+coverage/
+
+# Hardhat artifacts
+Hardhat/cache/
+Hardhat/artifacts/
+Hardhat/typechain/
+Hardhat/typechain-types/
+Hardhat/coverage/
+Hardhat/deployments/
+
+# Generated files
+*.tsbuildinfo
+next-env.d.ts
+
+# Lock files
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+
+# Vercel
+.vercel
+
