@@ -72,6 +72,14 @@ cp .env.example .env.local
 | `NEXT_PUBLIC_PINATA_SECRET_KEY` | [app.pinata.cloud](https://app.pinata.cloud/) | ✅ Yes |
 | `ALCHEMY_API_KEY` | [alchemy.com](https://www.alchemy.com/) | ✅ Yes |
 | `NEXT_PUBLIC_BSTR_CONTRACT_ADDRESS` | From contract deployment | ✅ Yes |
+| `NEXT_PUBLIC_RS1_TOKEN_ADDRESS` | RS1 token contract | ✅ Yes |
+| `NEXT_PUBLIC_RS1_PRESALE_VAULT_ADDRESS` | RS1 presale vault contract | ✅ Yes |
+| `NEXT_PUBLIC_RS1_FUNDS_VAULT_ADDRESS` | RS1 funds vault contract | ✅ Yes |
+| `NEXT_PUBLIC_USDC_ADDRESS` | USDC token contract (Base) | ✅ Yes |
+| `DIDIT_API_KEY` | [business.didit.me](https://business.didit.me) | ✅ Yes |
+| `DIDIT_WEBHOOK_SECRET` | Didit console | ✅ Yes |
+| `DIDIT_WORKFLOW_ID` | Didit console | ✅ Yes |
+| `NEXT_PUBLIC_APP_URL` | App URL for webhooks | ✅ Yes |
 | `ENCRYPTION_KEY` | Auto-generated if not provided (32 chars) | ⚠️ Optional |
 | `NEXT_PUBLIC_PAYMASTER_AND_BUNDLER_ENDPOINT` | For gasless transactions | ⚠️ Optional |
 
@@ -424,7 +432,7 @@ Closes #123
 | Standard | Rule |
 |----------|------|
 | **TypeScript** | Use TypeScript for all new code. Avoid `any` types |
-| **React** | React 19.2.1 with Next.js 15.5.7 App Router |
+| **React** | React 19.2.3 (Security patched) with Next.js 15.5.7 App Router |
 | **Components** | Use functional components with hooks |
 | **Styling** | Tailwind CSS 4.1.17 with custom theme |
 | **Web3** | OnchainKit 1.0.3 for wallet integration |
@@ -496,9 +504,11 @@ yarn compile       # Contracts must compile
 - Runs on `http://localhost:3000`
 - Hot reload enabled
 - TypeScript strict mode
-- Next.js 15.5.7 with React 19.2.1
+- Next.js 15.5.7 with React 19.2.3 (Security patched)
 - Tailwind CSS 4.1.17 with PostCSS
 - OnchainKit 1.0.3 for wallet integration
+- RS1 Presale system with KYC integration
+- Didit.me KYC verification
 
 ### Contract Developers
 

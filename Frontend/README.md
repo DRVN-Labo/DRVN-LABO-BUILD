@@ -15,7 +15,7 @@ DRVN VHCLS is a next-generation automotive platform that combines the thrill of 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 15.5.7](https://nextjs.org/) with App Router
-- **React**: [React 19.2.1](https://react.dev/)
+- **React**: [React 19.2.3](https://react.dev/) (Security patched)
 - **Styling**: [Tailwind CSS 4.1.17](https://tailwindcss.com/) with custom theme
 - **Web3**: [OnchainKit 1.0.3](https://www.base.org/builders/onchainkit) for wallet integration
 - **Blockchain**: [Base](https://base.org/) network
@@ -98,6 +98,18 @@ DRVN VHCLS is a next-generation automotive platform that combines the thrill of 
    NEXT_PUBLIC_BSTR_CONTRACT_ADDRESS=
    NEXT_PUBLIC_BSTR_ETH_POOL_ADDRESS=
    NEXT_PUBLIC_BSTR_USDC_POOL_ADDRESS=
+
+   # RS1 Presale Variables
+   NEXT_PUBLIC_RS1_TOKEN_ADDRESS=
+   NEXT_PUBLIC_RS1_PRESALE_VAULT_ADDRESS=
+   NEXT_PUBLIC_RS1_FUNDS_VAULT_ADDRESS=
+   NEXT_PUBLIC_USDC_ADDRESS=
+
+   # Didit.me KYC Configuration
+   DIDIT_API_KEY=
+   DIDIT_WEBHOOK_SECRET=
+   DIDIT_WORKFLOW_ID=
+   NEXT_PUBLIC_APP_URL=http://localhost:3000
    ```
 
 4. **Start the development server**
@@ -148,11 +160,32 @@ drvn-mini-app/
 - **Trading Interface**: Buy/sell car tokens with USDC
 - **Market Analytics**: Real-time pricing and market data
 
+### 🚀 RS1 Presale System
+
+- **Multi-Stage Presale**: Three-stage presale with tiered pricing
+- **Stage Access Control**: BSTR token or NFT key requirements for each stage
+  - Stage 1: 5M BSTR or 1 Steel Key NFT
+  - Stage 2: 3M BSTR or 1 Carbon Key NFT
+  - Stage 3: 1M BSTR or 1 Titanium Key NFT
+- **KYC Verification**: Didit.me integration for identity verification
+- **Share-Based Purchasing**: Purchase RS1 tokens in share units (1 share = 1M RS1)
+- **Real-Time Progress**: Live share meter and stage progress tracking
+- **Claim System**: Claim purchased tokens after presale completion
+
+### 🔐 KYC Integration
+
+- **Didit.me Verification**: Full KYC integration with Didit.me
+- **Webhook Support**: Real-time status updates via webhooks
+- **Multi-Status Tracking**: Track verification status (not_started, pending, approved, rejected)
+- **Session Management**: Secure session handling for verification flow
+- **Database Integration**: User KYC status stored in MongoDB
+
 ### 👥 User Management
 
 - **Wallet Authentication**: Seamless Web3 login with Base network
 - **Profile Management**: Customizable user profiles with IPFS image uploads
 - **User Dashboard**: Personalized experience with saved preferences
+- **KYC Status**: Track and display user verification status
 
 ### 📱 Mobile-First Design
 
@@ -479,10 +512,13 @@ vercel domains add yourdomain.com
 The application requires several environment variables for full functionality:
 
 - **OnchainKit**: Web3 wallet integration and Frame metadata
-- **MongoDB**: User data and application state
+- **MongoDB**: User data, application state, and KYC status
 - **Redis**: Real-time notifications and caching
 - **Pinata/IPFS**: Profile image storage
 - **Farcaster**: Social features and Frame integration
+- **Didit.me**: KYC verification service (API key, webhook secret, workflow ID)
+- **RS1 Contracts**: RS1 token, presale vault, and funds vault addresses
+- **USDC**: USDC token contract address for presale purchases
 
 ### Database Setup
 
@@ -521,6 +557,21 @@ The application requires several environment variables for full functionality:
 - Article and video content
 - Community features and social interactions
 - Premium content access control
+
+### RS1 Presale System
+
+- Multi-stage presale with access control
+- KYC verification integration
+- Share-based token purchasing
+- Real-time progress tracking
+- Token claiming after presale
+
+### KYC Verification
+
+- Didit.me integration
+- Webhook-based status updates
+- User verification tracking
+- Secure session management
 
 ## 🚀 Deployment
 

@@ -31,8 +31,8 @@ This document explains the **mandatory security update** that has been applied t
 | Package | Old Version | New Version | Reason |
 |---------|-----------|-------------|--------|
 | **Next.js** | < 15.5.7 | **15.5.7** | Security vulnerabilities, compromised versions |
-| **React** | < 19.2.1 | **19.2.1** | Security vulnerabilities, breaking changes |
-| **React-DOM** | < 19.2.1 | **19.2.1** | Must match React version |
+| **React** | < 19.2.3 | **19.2.3** | Security vulnerabilities (CVE-2025-55184, CVE-2025-67779, CVE-2025-55183) |
+| **React-DOM** | < 19.2.3 | **19.2.3** | Must match React version |
 | **Tailwind CSS** | < 4.1.17 | **4.1.17** | Major version update, new features |
 | **OnchainKit** | Various | **1.0.3** | Exact version required for Base Mini App |
 | **Wagmi** | < 2.16.0 | **2.16.0** | Compatibility with React 19 |
@@ -98,8 +98,8 @@ npm list next react react-dom tailwindcss @coinbase/onchainkit wagmi viem
 ```
 drvn-mini-app@0.1.0
 ├── next@15.5.7
-├── react@19.2.1
-├── react-dom@19.2.1
+├── react@19.2.3
+├── react-dom@19.2.3
 ├── tailwindcss@4.1.17
 ├── @coinbase/onchainkit@1.0.3
 ├── wagmi@2.16.0
@@ -196,8 +196,8 @@ Our GitHub Actions workflows will **automatically check** your PR for correct pa
 ### What Gets Checked
 
 - ✅ Next.js version (must be ^15.5.7)
-- ✅ React version (must be ^19.2.1)
-- ✅ React-DOM version (must be ^19.2.1)
+- ✅ React version (must be ^19.2.3)
+- ✅ React-DOM version (must be ^19.2.3)
 - ✅ Tailwind CSS version (must be ^4.1.17)
 - ✅ OnchainKit version (must be exactly 1.0.3)
 - ✅ Wagmi version (must be ^2.16.0)
@@ -213,7 +213,7 @@ Our GitHub Actions workflows will **automatically check** your PR for correct pa
 **Solution:**
 ```bash
 cd Frontend
-npm install next@^15.5.7 react@^19.2.1 react-dom@^19.2.1
+npm install next@^15.5.7 react@^19.2.3 react-dom@^19.2.3
 npm install -D tailwindcss@^4.1.17
 npm install @coinbase/onchainkit@1.0.3
 npm install wagmi@^2.16.0 viem@^2.27.2

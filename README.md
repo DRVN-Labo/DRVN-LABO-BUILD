@@ -65,11 +65,32 @@ DRVN VHCLS is a next-generation automotive platform that **tokenizes real-world 
 - **Trading Interface**: Buy/sell car tokens with USDC
 - **Market Analytics**: Real-time pricing and market data
 
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:rocket.svg?color=%2300daa2"><img src="https://api.iconify.design/lucide:rocket.svg?color=%23000000" width="18" height="18" alt="" /></picture> RS1 Presale System
+
+- **Multi-Stage Presale**: Three-stage presale with tiered pricing and access control
+- **Stage Requirements**: BSTR token or NFT key requirements for each stage
+  - Stage 1: 5M BSTR or 1 Steel Key NFT
+  - Stage 2: 3M BSTR or 1 Carbon Key NFT
+  - Stage 3: 1M BSTR or 1 Titanium Key NFT
+- **KYC Integration**: Didit.me verification required for participation
+- **Share-Based Purchasing**: Purchase RS1 tokens in share units (1 share = 1M RS1)
+- **Real-Time Progress**: Live share meter and stage progress tracking
+- **Token Claiming**: Claim purchased tokens after presale completion
+
+### <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:shield.svg?color=%2300daa2"><img src="https://api.iconify.design/lucide:shield.svg?color=%23000000" width="18" height="18" alt="" /></picture> KYC Verification
+
+- **Didit.me Integration**: Full KYC verification system
+- **Webhook Support**: Real-time status updates via webhooks
+- **Multi-Status Tracking**: Track verification status (not_started, pending, approved, rejected)
+- **Secure Sessions**: Secure session handling for verification flow
+- **Database Integration**: User KYC status stored in MongoDB
+
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:users.svg?color=%2300daa2"><img src="https://api.iconify.design/lucide:users.svg?color=%23000000" width="18" height="18" alt="" /></picture> User Management
 
 - **Wallet Authentication**: Seamless Web3 login with Base network
 - **Profile Management**: Customizable user profiles with IPFS image uploads
 - **User Dashboard**: Personalized experience with saved preferences
+- **KYC Status**: Track and display user verification status
 
 ### <picture><source media="(prefers-color-scheme: dark)" srcset="https://api.iconify.design/lucide:smartphone.svg?color=%2300daa2"><img src="https://api.iconify.design/lucide:smartphone.svg?color=%23000000" width="18" height="18" alt="" /></picture> Multi-Platform Support
 
@@ -112,7 +133,7 @@ DRVN-MINI-APP/
 | Component | Technology | Version |
 |-----------|-----------|---------|
 | Framework | Next.js | 15.5.7 |
-| React | React | 19.2.1 |
+| React | React | 19.2.3 (Security patched) |
 | Styling | Tailwind CSS | 4.1.17 |
 | Web3 | OnchainKit | 1.0.3 |
 | Blockchain | Base Network | Mainnet/Testnet |
@@ -268,6 +289,14 @@ yarn chain
 | `ENCRYPTION_KEY` | ⚠️ | Encryption key (32+ chars) | Generate securely |
 | `ALCHEMY_API_KEY` | ✅ | Alchemy API key | [alchemy.com](https://www.alchemy.com/) |
 | `NEXT_PUBLIC_BSTR_CONTRACT_ADDRESS` | ✅ | BSTR token contract | Contract deployment |
+| `NEXT_PUBLIC_RS1_TOKEN_ADDRESS` | ✅ | RS1 token contract | Contract deployment |
+| `NEXT_PUBLIC_RS1_PRESALE_VAULT_ADDRESS` | ✅ | RS1 presale vault contract | Contract deployment |
+| `NEXT_PUBLIC_RS1_FUNDS_VAULT_ADDRESS` | ✅ | RS1 funds vault contract | Contract deployment |
+| `NEXT_PUBLIC_USDC_ADDRESS` | ✅ | USDC token contract | Base network USDC |
+| `DIDIT_API_KEY` | ✅ | Didit.me API key | [business.didit.me](https://business.didit.me) |
+| `DIDIT_WEBHOOK_SECRET` | ✅ | Didit webhook secret | Didit console |
+| `DIDIT_WORKFLOW_ID` | ✅ | Didit workflow ID | Didit console |
+| `NEXT_PUBLIC_APP_URL` | ✅ | App URL for webhooks | Your deployment URL |
 | `FARCASTER_HEADER` | ❌ | Farcaster header (optional) | Farcaster dev tools |
 | `FARCASTER_PAYLOAD` | ❌ | Farcaster payload (optional) | Farcaster dev tools |
 | `FARCASTER_SIGNATURE` | ❌ | Farcaster signature (optional) | Farcaster dev tools |
@@ -459,6 +488,9 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for full details.
 | [Contributing Guide](CONTRIBUTING.md) | Contribution guidelines |
 | [Code of Conduct](CODE_OF_CONDUCT.md) | Community standards |
 | [Security Policy](SECURITY.md) | Security reporting process |
+| [KYC Setup Guide](Frontend/KYC_SETUP.md) | Didit.me KYC integration setup |
+| [KYC Troubleshooting](Frontend/KYC_TROUBLESHOOTING.md) | KYC integration troubleshooting |
+| [Webhook Setup](Frontend/WEBHOOK_SETUP.md) | Webhook configuration for KYC |
 
 ---
 

@@ -465,7 +465,7 @@ Related to #456
 | Aspect | Standard |
 |--------|----------|
 | **TypeScript** | Use TypeScript for all new code. Avoid `any` types. |
-| **React** | React 19.2.1 with Next.js 15.5.7 App Router |
+| **React** | React 19.2.3 (Security patched) with Next.js 15.5.7 App Router |
 | **Components** | Use functional components with hooks |
 | **Styling** | Tailwind CSS 4.1.17 with custom theme |
 | **Web3** | OnchainKit 1.0.3 for wallet integration |
